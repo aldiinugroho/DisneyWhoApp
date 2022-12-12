@@ -11,6 +11,7 @@
 		4E59DB702946E4F900A078FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E59DB6F2946E4F900A078FE /* Assets.xcassets */; };
 		4E59DB732946E4F900A078FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E59DB712946E4F900A078FE /* LaunchScreen.storyboard */; };
 		4E59DB7F2946E5DE00A078FE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB7E2946E5DE00A078FE /* MainViewController.swift */; };
+		4E59DB822946EC8500A078FE /* networkings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB812946EC8500A078FE /* networkings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		4E59DB722946E4F900A078FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E59DB742946E4F900A078FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E59DB7E2946E5DE00A078FE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4E59DB812946EC8500A078FE /* networkings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		4E59DB7A2946E5B400A078FE /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4E59DB802946EC7800A078FE /* networkings */,
 				4E59DB7C2946E5C200A078FE /* utils */,
 				4E59DB7B2946E5BE00A078FE /* pages */,
 			);
@@ -83,6 +86,14 @@
 			children = (
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		4E59DB802946EC7800A078FE /* networkings */ = {
+			isa = PBXGroup;
+			children = (
+				4E59DB812946EC8500A078FE /* networkings.swift */,
+			);
+			path = networkings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E59DB7F2946E5DE00A078FE /* MainViewController.swift in Sources */,
+				4E59DB822946EC8500A078FE /* networkings.swift in Sources */,
 				4E59DB672946E4F800A078FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
