@@ -8,22 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		4E59DB672946E4F800A078FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB662946E4F800A078FE /* AppDelegate.swift */; };
-		4E59DB692946E4F800A078FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB682946E4F800A078FE /* SceneDelegate.swift */; };
-		4E59DB6B2946E4F800A078FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB6A2946E4F800A078FE /* ViewController.swift */; };
-		4E59DB6E2946E4F800A078FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E59DB6C2946E4F800A078FE /* Main.storyboard */; };
 		4E59DB702946E4F900A078FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E59DB6F2946E4F900A078FE /* Assets.xcassets */; };
 		4E59DB732946E4F900A078FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E59DB712946E4F900A078FE /* LaunchScreen.storyboard */; };
+		4E59DB7F2946E5DE00A078FE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59DB7E2946E5DE00A078FE /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E59DB632946E4F800A078FE /* DisneyWhoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisneyWhoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E59DB662946E4F800A078FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E59DB682946E4F800A078FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E59DB6A2946E4F800A078FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4E59DB6D2946E4F800A078FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E59DB6F2946E4F900A078FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E59DB722946E4F900A078FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E59DB742946E4F900A078FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E59DB7E2946E5DE00A078FE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +52,37 @@
 		4E59DB652946E4F800A078FE /* DisneyWhoApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E59DB7A2946E5B400A078FE /* src */,
 				4E59DB662946E4F800A078FE /* AppDelegate.swift */,
-				4E59DB682946E4F800A078FE /* SceneDelegate.swift */,
-				4E59DB6A2946E4F800A078FE /* ViewController.swift */,
-				4E59DB6C2946E4F800A078FE /* Main.storyboard */,
 				4E59DB6F2946E4F900A078FE /* Assets.xcassets */,
 				4E59DB712946E4F900A078FE /* LaunchScreen.storyboard */,
 				4E59DB742946E4F900A078FE /* Info.plist */,
 			);
 			path = DisneyWhoApp;
+			sourceTree = "<group>";
+		};
+		4E59DB7A2946E5B400A078FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4E59DB7C2946E5C200A078FE /* utils */,
+				4E59DB7B2946E5BE00A078FE /* pages */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		4E59DB7B2946E5BE00A078FE /* pages */ = {
+			isa = PBXGroup;
+			children = (
+				4E59DB7E2946E5DE00A078FE /* MainViewController.swift */,
+			);
+			path = pages;
+			sourceTree = "<group>";
+		};
+		4E59DB7C2946E5C200A078FE /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +145,6 @@
 			files = (
 				4E59DB732946E4F900A078FE /* LaunchScreen.storyboard in Resources */,
 				4E59DB702946E4F900A078FE /* Assets.xcassets in Resources */,
-				4E59DB6E2946E4F800A078FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E59DB6B2946E4F800A078FE /* ViewController.swift in Sources */,
+				4E59DB7F2946E5DE00A078FE /* MainViewController.swift in Sources */,
 				4E59DB672946E4F800A078FE /* AppDelegate.swift in Sources */,
-				4E59DB692946E4F800A078FE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4E59DB6C2946E4F800A078FE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E59DB6D2946E4F800A078FE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4E59DB712946E4F900A078FE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,10 +299,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisneyWhoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +310,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nugroho.DisneyWhoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,10 +330,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisneyWhoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +341,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nugroho.DisneyWhoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
