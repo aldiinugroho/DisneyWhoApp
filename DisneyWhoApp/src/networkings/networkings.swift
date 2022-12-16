@@ -30,8 +30,14 @@ struct data: Decodable {
     let url: String
 }
 
-class Networkings {
-    func fetchListCharacters(completion: @escaping (Result<responsedata,NetworkError>) -> Void) {
+struct swiftiesdatamodel: Decodable {
+    let quote: String
+    let song: String
+    let album: String
+}
+
+extension MainViewController {
+    func fetchListCharacters(completion: @escaping (Result<[data],NetworkError>) -> Void) {
         let urlMain = URL(string: "https://api.disneyapi.dev/characters")!
         let session = URLSession.shared
         session.dataTask(with: urlMain) { data, response, error in
@@ -44,6 +50,28 @@ class Networkings {
                     // print(String(data: data, encoding: .utf8) as AnyObject)
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(responsedata.self, from: data)
+                    completion(.success(result.data))
+                } catch (let e) {
+                    print(e)
+                    completion(.failure(.decodingError))
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchdataswifties(completion: @escaping (Result<swiftiesdatamodel,NetworkError>) -> Void) {
+        let urlMain = URL(string: "https://taylorswiftapi.onrender.com/get")!
+        let session = URLSession.shared
+        session.dataTask(with: urlMain) { data, response, error in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    completion(.failure(.serverError))
+                    return
+                }
+                do {
+                    print(String(data: data, encoding: .utf8) as AnyObject)
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(swiftiesdatamodel.self, from: data)
                     completion(.success(result))
                 } catch (let e) {
                     print(e)

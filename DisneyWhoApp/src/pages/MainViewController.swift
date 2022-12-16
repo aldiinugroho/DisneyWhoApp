@@ -11,9 +11,11 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: - declaration
-    var data = [UIColor.red,UIColor.orange,UIColor.blue,UIColor.brown]
     var collectionView: UICollectionView!
     let collectionViewFlowlayout = UICollectionViewFlowLayout()
+    var dataresponsetemp: [data] = []
+    var stringtest: String = ""
+    var datautamatoshow: [MainViewControllerCell.modelView] = []
     
     // MARK: - component life cycle
     override func viewDidLoad() {
@@ -26,20 +28,24 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     private func setup() {
-        // make sure that there is a slightly larger gap at the top of each row
-//         collectionViewFlowlayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        // set a standard item size of 60 * 60
-//        collectionViewFlowlayout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.5, height: 60)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+         // make sure that there is a slightly larger gap at the top of each row
+//         collectionViewFlowlayout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+         // set a standard item size of 60 * 60
+//        collectionViewFlowlayout.itemSize = CGSize(width: UIScreen.main.bounds.width/4.5, height: UIScreen.main.bounds.width/4.5)
         // the layout scrolls horizontally
         collectionViewFlowlayout.scrollDirection = .vertical
         collectionViewFlowlayout.minimumLineSpacing = 0
         collectionViewFlowlayout.minimumInteritemSpacing = 0
         // set the frame and layout
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowlayout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MainViewControllerCell.self, forCellWithReuseIdentifier: MainViewControllerCell().identifierId)
+        collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.collectionViewHeaderId)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
+        collectionView.backgroundColor = appColor
+        collectionView.contentInsetAdjustmentBehavior = .never
 //        collectionView.backgroundColor = .systemPink
         // set the view to be this UICollectionView
         view = collectionView
@@ -52,39 +58,70 @@ extension MainViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return datautamatoshow.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // dequeue the standard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let data = self.data[indexPath.item]
-        cell.backgroundColor = data
+        let data = self.datautamatoshow[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewControllerCell().identifierId, for: indexPath) as! MainViewControllerCell
+        cell.configure(data: data)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenrect = UIScreen.main.bounds
         let screenwidth = screenrect.width
-        let cellWidth = screenwidth / 3
-        let size = CGSizeMake(cellWidth, cellWidth)
+        let cellWidth = screenwidth / 4
+        let size = CGSizeMake(cellWidth, cellWidth+12)
         return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewHeader.collectionViewHeaderId, for: indexPath) as! CollectionViewHeader
+            return view
+        default:
+            assert(false, "Unexpected")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedview = self.datautamatoshow[indexPath.item]
+        let view = DetailViewController()
+        let datatoshow = DetailViewController.modelView(titlename: selectedview.text, imageUrl: selectedview.image, filmArray: [])
+        view.configure(with: datatoshow)
+        navigationController?.pushViewController(view, animated: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(view.frame.width, view.frame.height/2)
     }
 }
 
 extension MainViewController {
-    func fetchingdata() {
-        Networkings().fetchListCharacters() { result in
+    
+    private func fetchingdata() {
+        datautamatoshow = [
+            MainViewControllerCell.modelView(color: UIColor.purple, text: "-", image: "https://www.befunky.com/images/prismic/67fab425-8f93-42f5-a4b0-4e19c2119500_hero-photo-editor.jpg?auto=avif,webp&format=jpg&width=896")
+        ]
+        fetchListCharacters() { result in
             switch result {
             case .success(let success):
                 print(success)
+                self.settupdatacollection(with: success)
+                self.collectionView.reloadData()
             case .failure(let failure):
                 print(failure)
             }
+        }
+    }
+    
+    private func settupdatacollection(with: [data]) {
+        print(with)
+        datautamatoshow = with.map {
+            MainViewControllerCell.modelView(color: appColor, text: $0.name, image: $0.imageUrl)
         }
     }
 }
