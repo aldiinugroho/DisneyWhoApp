@@ -135,7 +135,9 @@ extension DetailViewController {
 
 extension DetailViewController {
     func configure(with: modelView) {
+        print(with.filmArray)
+        datafilm = with.filmArray
         titleName.text = with.titlename
-        imageView.downloaded(from: with.imageUrl)
+        imageView.downloaded(from: with.imageUrl, contentMode: .scaleAspectFill)
     }
 }

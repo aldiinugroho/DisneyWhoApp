@@ -14,6 +14,7 @@ class MainViewControllerCell: UICollectionViewCell {
         let color: UIColor
         let text: String
         let image: String
+        let filmarray: Array<String>
     }
     
     let identifierId: String = "MainViewControllerCell_identifier"
@@ -74,7 +75,6 @@ extension MainViewControllerCell {
 
 extension MainViewControllerCell {
     func configure(data: modelView) {
-//        self.backgroundColor = data.color
         titleText.text = data.text
         imageView.downloaded(from: data.image, contentMode: .scaleToFill)
     }

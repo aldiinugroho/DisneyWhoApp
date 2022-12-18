@@ -90,7 +90,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedview = self.datautamatoshow[indexPath.item]
         let view = DetailViewController()
-        let datatoshow = DetailViewController.modelView(titlename: selectedview.text, imageUrl: selectedview.image, filmArray: [])
+        let datatoshow = DetailViewController.modelView(titlename: selectedview.text, imageUrl: selectedview.image, filmArray: selectedview.filmarray)
         view.configure(with: datatoshow)
         navigationController?.pushViewController(view, animated: false)
     }
@@ -104,12 +104,12 @@ extension MainViewController {
     
     private func fetchingdata() {
         datautamatoshow = [
-            MainViewControllerCell.modelView(color: UIColor.purple, text: "-", image: "https://www.befunky.com/images/prismic/67fab425-8f93-42f5-a4b0-4e19c2119500_hero-photo-editor.jpg?auto=avif,webp&format=jpg&width=896")
+            MainViewControllerCell.modelView(color: UIColor.purple, text: "-", image: "https://www.befunky.com/images/prismic/67fab425-8f93-42f5-a4b0-4e19c2119500_hero-photo-editor.jpg?auto=avif,webp&format=jpg&width=896", filmarray: [])
         ]
         fetchListCharacters() { result in
             switch result {
             case .success(let success):
-                print(success)
+//                print(success)
                 self.settupdatacollection(with: success)
                 self.collectionView.reloadData()
             case .failure(let failure):
@@ -119,9 +119,9 @@ extension MainViewController {
     }
     
     private func settupdatacollection(with: [data]) {
-        print(with)
+//        print(with)
         datautamatoshow = with.map {
-            MainViewControllerCell.modelView(color: appColor, text: $0.name, image: $0.imageUrl)
+            MainViewControllerCell.modelView(color: appColor, text: $0.name, image: $0.imageUrl, filmarray: $0.films)
         }
     }
 }
