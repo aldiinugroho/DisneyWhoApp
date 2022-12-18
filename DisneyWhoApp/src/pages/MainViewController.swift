@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     private func setup() {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
          // make sure that there is a slightly larger gap at the top of each row
 //         collectionViewFlowlayout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
          // set a standard item size of 60 * 60
